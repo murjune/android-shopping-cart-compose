@@ -10,9 +10,11 @@ import androidx.navigation.NavOptions
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import androidx.navigation.toRoute
+import kotlinx.coroutines.flow.combine
 import kotlinx.serialization.Serializable
 import nextstep.shoppingcart.domain.repository.CartRepository
 import nextstep.shoppingcart.domain.repository.ProductRepository
+import nextstep.shoppingcart.presentation.product.model.ProductUiModel
 
 fun NavController.navigateToProductDetail(
     productId: Long,
@@ -32,12 +34,29 @@ fun NavGraphBuilder.productGraph(
     ) {
         composable<ProductRoute.Home> {
             val productRepository = ProductRepository.get()
-            val products by productRepository.products()
-                .collectAsStateWithLifecycle(initialValue = emptyList())
+            val cartRepository = CartRepository.get()
+            val products: List<ProductUiModel> by combine(
+                productRepository.products(),
+                cartRepository.cartProducts()
+            ) { products, cartProducts ->
+                products.map { product ->
+                    val cartProduct = cartProducts.find { it.product.id == product.id }
+                    ProductUiModel(
+                        id = product.id,
+                        imageUrl = product.imageUrl,
+                        name = product.name,
+                        price = product.price,
+                        count = cartProduct?.count ?: 0
+                    )
+                }
+            }.collectAsStateWithLifecycle(emptyList())
+
             ProductScreen(
                 products = products,
                 onCartClick = navigateToCart,
-                onItemClick = navigateToProductDetail
+                onItemClick = navigateToProductDetail,
+                onProductPlus = { cartRepository.addProduct(it, 1) },
+                onProductMinus = { cartRepository.removeProduct(it, 1) },
             )
         }
         composable<ProductRoute.Detail> { backStackEntry ->

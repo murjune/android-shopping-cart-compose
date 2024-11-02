@@ -3,8 +3,7 @@ package nextstep.shoppingcart.presentation.product
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
-import nextstep.shoppingcart.domain.model.Product
-import nextstep.shoppingcart.presentation.product.ProductScreen
+import nextstep.shoppingcart.presentation.product.model.ProductUiModel
 import org.junit.Rule
 import org.junit.Test
 
@@ -20,7 +19,9 @@ class ProductScreenTest {
                 ProductScreen(
                     products = emptyList(),
                     onItemClick = {},
-                    onCartClick = {}
+                    onCartClick = {},
+                    onProductPlus = {},
+                    onProductMinus = {},
                 )
             }
 
@@ -35,10 +36,18 @@ class ProductScreenTest {
             .setContent {
                 ProductScreen(
                     products = listOf(
-                        Product(id = 1L, imageUrl = "testUrl", name = "오둥이", price = 1_000)
+                        ProductUiModel(
+                            id = 1L,
+                            imageUrl = "testUrl",
+                            name = "오둥이",
+                            price = 1_000,
+                            0
+                        )
                     ),
                     onItemClick = {},
-                    onCartClick = {}
+                    onCartClick = {},
+                    onProductPlus = {},
+                    onProductMinus = {},
                 )
             }
         composeTestRule
@@ -53,7 +62,9 @@ class ProductScreenTest {
                 ProductScreen(
                     products = emptyList(),
                     onItemClick = {},
-                    onCartClick = {}
+                    onCartClick = {},
+                    onProductPlus = {},
+                    onProductMinus = {},
                 )
             }
         composeTestRule

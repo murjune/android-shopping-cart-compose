@@ -24,17 +24,19 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import nextstep.shoppingcart.R
-import nextstep.shoppingcart.domain.model.Product
 import nextstep.shoppingcart.presentation.product.component.ProductItem
+import nextstep.shoppingcart.presentation.product.model.ProductUiModel
 import nextstep.shoppingcart.presentation.product.preview.ProductPreviewParameterProvider
 import nextstep.shoppingcart.presentation.ui.theme.ShoppingCartTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProductScreen(
-    products: List<Product>,
+    products: List<ProductUiModel>,
     onItemClick: (id: Long) -> Unit,
     onCartClick: () -> Unit,
+    onProductPlus: (id: Long) -> Unit,
+    onProductMinus: (id: Long) -> Unit,
 ) {
     Scaffold(
         topBar = {
@@ -65,17 +67,20 @@ fun ProductScreen(
             modifier = Modifier
                 .padding(innerPadding)
                 .padding(horizontal = 18.dp),
-            onItemClick = onItemClick
+            onItemClick = onItemClick,
+            onProductPlus = onProductPlus,
+            onProductMinus = onProductMinus
         )
     }
 }
 
-
 @Composable
 private fun ProductContent(
-    products: List<Product>,
+    products: List<ProductUiModel>,
     modifier: Modifier = Modifier,
     onItemClick: (id: Long) -> Unit,
+    onProductPlus: (id: Long) -> Unit,
+    onProductMinus: (id: Long) -> Unit,
 ) {
     LazyVerticalGrid(
         modifier = modifier,
@@ -86,7 +91,10 @@ private fun ProductContent(
         items(products, key = { it.id }) { product ->
             ProductItem(
                 product,
-                onClick = onItemClick
+                onClick = onItemClick,
+                count = product.count,
+                onProductPlus = { onProductPlus(product.id) },
+                onProductMinus = { onProductMinus(product.id) },
             )
         }
     }
@@ -111,9 +119,9 @@ private fun ProductEmptyContent(
 @Preview(showBackground = true)
 @Composable
 private fun PreviewProductScreen(
-    @PreviewParameter(ProductPreviewParameterProvider::class) products: List<Product>
+    @PreviewParameter(ProductPreviewParameterProvider::class) products: List<ProductUiModel>
 ) {
     ShoppingCartTheme {
-        ProductScreen(products, {}, {})
+        ProductScreen(products, {}, {}, {}, {})
     }
 }
