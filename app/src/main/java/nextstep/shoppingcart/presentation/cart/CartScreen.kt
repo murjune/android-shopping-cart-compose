@@ -27,10 +27,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
 import nextstep.shoppingcart.R
-import nextstep.shoppingcart.presentation.cart.component.CartProductItem
-import nextstep.shoppingcart.presentation.ui.component.ShoppingButton
 import nextstep.shoppingcart.domain.model.CartProduct
 import nextstep.shoppingcart.domain.model.Product
+import nextstep.shoppingcart.presentation.cart.component.CartProductItem
+import nextstep.shoppingcart.presentation.ui.component.ShoppingButton
 import nextstep.shoppingcart.presentation.ui.theme.ShoppingCartTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -39,6 +39,7 @@ fun CartScreen(
     cartProducts: List<CartProduct>,
     orderPrice: Int,
     onBack: () -> Unit,
+    onOrder: () -> Unit,
     onCartProductPlus: (productId: Long) -> Unit,
     onCartProductMinus: (productId: Long) -> Unit,
     onCartProductRemove: (productId: Long) -> Unit,
@@ -48,6 +49,7 @@ fun CartScreen(
     val completeMessage = stringResource(id = R.string.cart_order_snackbar)
     val onOrder: () -> Unit = remember {
         {
+            onOrder()
             coroutineScope.launch {
                 snackbarHostState.showSnackbar(
                     message = completeMessage
@@ -148,6 +150,7 @@ private fun CartScreenPreview() {
             ),
             orderPrice = 22000,
             onBack = {},
+            onOrder = {},
             onCartProductPlus = {},
             onCartProductMinus = {},
             onCartProductRemove = {},

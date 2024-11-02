@@ -54,5 +54,9 @@ class FakeCartRepository(
 
     override fun cartProducts(): Flow<List<CartProduct>> = cartProducts
 
+    override fun clear() {
+        cartProducts.value = emptyList()
+    }
+
     private fun productBy(id: Long): Product = Product(id, "url", "오둥 $id", 1000)
 }

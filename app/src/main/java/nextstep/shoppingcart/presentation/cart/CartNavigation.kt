@@ -38,13 +38,19 @@ fun NavGraphBuilder.cartScreen(
                 cartRepository.addProduct(productId, count = 1)
             }
         }
+        val onOrder = remember {
+            {
+                cartRepository.clear()
+            }
+        }
         CartScreen(
             cartProducts = cartProducts,
             orderPrice = orderPrice,
             onBack = onBack,
+            onOrder = onOrder,
             onCartProductPlus = onCartProductPlus,
             onCartProductMinus = onCartProductMinus,
-            onCartProductRemove = cartRepository::clearProduct
+            onCartProductRemove = cartRepository::clearProduct,
         )
     }
 }

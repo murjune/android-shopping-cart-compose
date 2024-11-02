@@ -52,6 +52,10 @@ class DefaultCartRepository(
         cartProducts.value = cartProducts.value.filter { it.product.id != productId }
     }
 
+    override fun clear() {
+        cartProducts.value = emptyList()
+    }
+
 
     override fun cartProducts(): Flow<List<CartProduct>> = cartProducts
 }
