@@ -13,4 +13,9 @@
     <string name="product_detail_screen_title">상품 상세</string>
     <string name="product_detail_price_description">금액</string>
     <string name="product_detail_add_cart_button">장바구니 담기</string>
+
+    <!--    Cart-->
+    <string name="cart_screen_title">장바구니</string>
+    <string name="cart_order_button">주문하기(%,d원)</string>
+    <string name="cart_order_snackbar">주문 완료 🎉</string>
 </resources>

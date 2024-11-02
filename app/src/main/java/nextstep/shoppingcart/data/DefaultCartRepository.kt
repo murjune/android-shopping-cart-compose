@@ -45,5 +45,13 @@ class DefaultCartRepository(
         cartProducts.value = newCartProducts
     }
 
+    override fun clearProduct(productId: Long) {
+        requireNotNull(cartProducts.value.any { it.product.id == productId }) {
+            "$productId 에 해당하는 상품이 장바구니에 없습니다."
+        }
+        cartProducts.value = cartProducts.value.filter { it.product.id != productId }
+    }
+
+
     override fun cartProducts(): Flow<List<CartProduct>> = cartProducts
 }

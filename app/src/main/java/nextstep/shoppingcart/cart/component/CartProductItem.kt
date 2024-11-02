@@ -41,7 +41,6 @@ internal fun CartProductItem(
 ) {
     Column(
         modifier = modifier
-            .padding(16.dp)
             .fillMaxWidth()
             .clip(RoundedCornerShape(8.dp))
             .border(
