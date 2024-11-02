@@ -1,4 +1,4 @@
-package nextstep.shoppingcart.product
+package nextstep.shoppingcart.presentation.product
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf

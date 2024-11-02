@@ -1,4 +1,4 @@
-package nextstep.shoppingcart.component
+package nextstep.shoppingcart.presentation.ui.component
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -18,7 +18,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import nextstep.shoppingcart.R
-import nextstep.shoppingcart.ui.theme.ShoppingCartTheme
+import nextstep.shoppingcart.presentation.ui.theme.ShoppingCartTheme
 
 @Composable
 fun Counter(

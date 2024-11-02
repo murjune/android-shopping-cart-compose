@@ -1,4 +1,4 @@
-package nextstep.shoppingcart.cart.component
+package nextstep.shoppingcart.presentation.cart.component
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -26,10 +26,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import nextstep.shoppingcart.R
-import nextstep.shoppingcart.component.Counter
-import nextstep.shoppingcart.component.ProductImage
+import nextstep.shoppingcart.presentation.ui.component.Counter
+import nextstep.shoppingcart.presentation.ui.component.ProductImage
 import nextstep.shoppingcart.domain.model.CartProduct
-import nextstep.shoppingcart.ui.theme.ShoppingCartTheme
+import nextstep.shoppingcart.domain.model.Product
+import nextstep.shoppingcart.presentation.ui.theme.ShoppingCartTheme
 
 @Composable
 internal fun CartProductItem(
@@ -115,7 +116,7 @@ fun PreviewCartProductItem() {
     ShoppingCartTheme {
         CartProductItem(
             cartProduct = CartProduct(
-                product = nextstep.shoppingcart.domain.model.Product(
+                product = Product(
                     id = 1,
                     name = "상품 이름",
                     price = 1000,

@@ -1,4 +1,4 @@
-package nextstep.shoppingcart.cart
+package nextstep.shoppingcart.presentation.cart
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember

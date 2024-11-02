@@ -1,4 +1,4 @@
-package nextstep.shoppingcart.product.preview
+package nextstep.shoppingcart.presentation.product.preview
 
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import nextstep.shoppingcart.domain.model.Product

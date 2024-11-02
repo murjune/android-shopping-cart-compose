@@ -1,4 +1,4 @@
-package nextstep.shoppingcart.product
+package nextstep.shoppingcart.presentation.product
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -25,9 +25,9 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import nextstep.shoppingcart.R
 import nextstep.shoppingcart.domain.model.Product
-import nextstep.shoppingcart.product.component.ProductItem
-import nextstep.shoppingcart.product.preview.ProductPreviewParameterProvider
-import nextstep.shoppingcart.ui.theme.ShoppingCartTheme
+import nextstep.shoppingcart.presentation.product.component.ProductItem
+import nextstep.shoppingcart.presentation.product.preview.ProductPreviewParameterProvider
+import nextstep.shoppingcart.presentation.ui.theme.ShoppingCartTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

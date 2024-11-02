@@ -1,4 +1,4 @@
-package nextstep.shoppingcart.component
+package nextstep.shoppingcart.presentation.ui.component
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier

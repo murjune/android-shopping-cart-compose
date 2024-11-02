@@ -1,4 +1,4 @@
-package nextstep.shoppingcart
+package nextstep.shoppingcart.presentation
 
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.test.junit4.createComposeRule
@@ -9,10 +9,10 @@ import androidx.navigation.NavDestination.Companion.hasRoute
 import androidx.navigation.compose.ComposeNavigator
 import androidx.navigation.testing.TestNavHostController
 import androidx.navigation.toRoute
-import nextstep.shoppingcart.cart.CartScreen
+import nextstep.shoppingcart.presentation.cart.CartScreen
 import nextstep.shoppingcart.data.FakeProductRepository
 import nextstep.shoppingcart.domain.repository.ProductRepository
-import nextstep.shoppingcart.product.ProductRoute
+import nextstep.shoppingcart.presentation.product.ProductRoute
 import nextstep.shoppingcart.domain.model.Product
 import org.junit.Before
 import org.junit.Rule

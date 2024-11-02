@@ -1,4 +1,4 @@
-package nextstep.shoppingcart.product
+package nextstep.shoppingcart.presentation.product
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -28,9 +28,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import nextstep.shoppingcart.R
-import nextstep.shoppingcart.component.ShoppingButton
+import nextstep.shoppingcart.presentation.ui.component.ShoppingButton
 import nextstep.shoppingcart.domain.model.Product
-import nextstep.shoppingcart.ui.theme.ShoppingCartTheme
+import nextstep.shoppingcart.presentation.ui.theme.ShoppingCartTheme
 
 @Composable
 fun ProductDetailScreen(

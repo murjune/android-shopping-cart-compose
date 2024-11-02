@@ -1,4 +1,4 @@
-package nextstep.shoppingcart.product.component
+package nextstep.shoppingcart.presentation.product.component
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -22,9 +22,9 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import nextstep.shoppingcart.R
-import nextstep.shoppingcart.component.ProductImage
+import nextstep.shoppingcart.presentation.ui.component.ProductImage
 import nextstep.shoppingcart.domain.model.Product
-import nextstep.shoppingcart.ui.theme.ShoppingCartTheme
+import nextstep.shoppingcart.presentation.ui.theme.ShoppingCartTheme
 
 @Composable
 internal fun ProductItem(

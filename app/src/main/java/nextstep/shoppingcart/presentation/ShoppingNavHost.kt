@@ -1,14 +1,14 @@
-package nextstep.shoppingcart
+package nextstep.shoppingcart.presentation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
-import nextstep.shoppingcart.cart.cartScreen
-import nextstep.shoppingcart.cart.navigateToCart
-import nextstep.shoppingcart.product.ProductRoute
-import nextstep.shoppingcart.product.navigateToProductDetail
-import nextstep.shoppingcart.product.productGraph
+import nextstep.shoppingcart.presentation.cart.cartScreen
+import nextstep.shoppingcart.presentation.cart.navigateToCart
+import nextstep.shoppingcart.presentation.product.ProductRoute
+import nextstep.shoppingcart.presentation.product.navigateToProductDetail
+import nextstep.shoppingcart.presentation.product.productGraph
 
 
 @Composable
