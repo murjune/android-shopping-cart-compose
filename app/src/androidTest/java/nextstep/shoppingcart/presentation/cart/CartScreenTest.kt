@@ -1,9 +1,7 @@
 package nextstep.shoppingcart.presentation.cart
 
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onAllNodesWithContentDescription
@@ -13,7 +11,9 @@ import androidx.compose.ui.test.onLast
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
+import nextstep.shoppingcart.data.FakeCartRepository
 import nextstep.shoppingcart.fixtures.cartProduct
+import nextstep.shoppingcart.fixtures.product
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -24,54 +24,37 @@ class CartScreenTest {
 
     @Before
     fun setUp() {
+        val cartRepository = FakeCartRepository(
+            products = listOf(
+                product(id = 1L, name = "휴지", price = 1000)
+            ),
+            cartProducts = listOf(
+                cartProduct(
+                    id = 1L, name = "휴지", price = 1000, count = 2
+                ),
+            )
+        )
         composeTestRule.setContent {
-            var cartProducts by remember {
-                mutableStateOf(
-                    listOf(
-                        cartProduct(
-                            id = 1L, name = "휴지", price = 1000, count = 2
-                        ),
-                    )
-                )
-            }
+            val cartProducts by cartRepository.cartProducts().collectAsState(initial = emptyList())
+
             val orderPrice = cartProducts.sumOf { it.product.price * it.count }
-            val onAddProduct = { productId: Long ->
-                cartProducts = cartProducts.map {
-                    if (it.product.id == productId) {
-                        it.copy(count = it.count + 1)
-                    } else {
-                        it
-                    }
-                }
-            }
-
-            val onRemoveProduct = { productId: Long ->
-                cartProducts = cartProducts.mapNotNull {
-                    if (it.product.id == productId) {
-                        if (it.count == 1) {
-                            return@mapNotNull null
-                        }
-                        it.copy(count = it.count - 1)
-                    } else {
-                        it
-                    }
-                }
-            }
-
-            val onRemoveAllProduct = { productId: Long ->
-                cartProducts = cartProducts.filter { it.product.id != productId }
-            }
 
             CartScreen(
                 cartProducts = cartProducts,
                 orderPrice = orderPrice,
                 onBack = {},
                 onOrder = {
-                    cartProducts = emptyList()
+                    cartRepository.clear()
                 },
-                onCartProductPlus = onAddProduct,
-                onCartProductMinus = onRemoveProduct,
-                onCartProductRemove = onRemoveAllProduct,
+                onCartProductPlus = {
+                    cartRepository.addProduct(it, 1)
+                },
+                onCartProductMinus = {
+                    cartRepository.removeProduct(it, 1)
+                },
+                onCartProductRemove = {
+                    cartRepository.clearProduct(it)
+                }
             )
         }
     }

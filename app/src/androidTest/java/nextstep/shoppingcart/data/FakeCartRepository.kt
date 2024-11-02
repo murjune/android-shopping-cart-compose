@@ -13,7 +13,7 @@ class FakeCartRepository(
     private val cartProducts: MutableStateFlow<List<CartProduct>> = MutableStateFlow(cartProducts)
 
     override fun addProduct(productId: Long, count: Int) {
-        val product = productBy(productId)
+        val product = products.find { it.id == productId }
         requireNotNull(product) {
             "$productId 에 해당하는 상품이 없습니다."
         }
@@ -61,6 +61,4 @@ class FakeCartRepository(
     override fun clear() {
         cartProducts.value = emptyList()
     }
-
-    private fun productBy(id: Long): Product? = products.find { it.id == id }
 }
