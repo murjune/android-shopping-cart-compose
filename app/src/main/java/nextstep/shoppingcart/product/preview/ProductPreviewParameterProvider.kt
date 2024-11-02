@@ -1,7 +1,7 @@
 package nextstep.shoppingcart.product.preview
 
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
-import nextstep.shoppingcart.product.model.Product
+import nextstep.shoppingcart.data.model.Product
 
 class ProductPreviewParameterProvider : PreviewParameterProvider<List<Product>> {
     override val values: Sequence<List<Product>>

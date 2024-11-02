@@ -14,7 +14,7 @@ import nextstep.shoppingcart.data.DefaultProductRepository
 import nextstep.shoppingcart.data.FakeProductRepository
 import nextstep.shoppingcart.data.ProductRepository
 import nextstep.shoppingcart.product.ProductRoute
-import nextstep.shoppingcart.product.model.Product
+import nextstep.shoppingcart.data.model.Product
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test

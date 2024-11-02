@@ -2,6 +2,7 @@ package nextstep.shoppingcart.data
 
 import androidx.annotation.VisibleForTesting
 import nextstep.shoppingcart.product.model.Product
+import nextstep.shoppingcart.data.model.Product
 
 interface ProductRepository {
     fun products(): List<Product>

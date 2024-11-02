@@ -1,6 +1,7 @@
 package nextstep.shoppingcart.data
 
 import nextstep.shoppingcart.product.model.Product
+import nextstep.shoppingcart.data.model.Product
 
 class DefaultProductRepository : ProductRepository {
     private var products: List<Product> = listOf(
