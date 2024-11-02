@@ -8,11 +8,15 @@ import nextstep.shoppingcart.domain.repository.CartRepository
 
 class FakeCartRepository(
     cartProducts: List<CartProduct> = emptyList(),
+    private val products: List<Product> = emptyList(),
 ) : CartRepository {
     private val cartProducts: MutableStateFlow<List<CartProduct>> = MutableStateFlow(cartProducts)
 
     override fun addProduct(productId: Long, count: Int) {
         val product = productBy(productId)
+        requireNotNull(product) {
+            "$productId 에 해당하는 상품이 없습니다."
+        }
         val cartProduct: CartProduct? = cartProducts.value.find { it.product.id == productId }
         if (cartProduct != null) {
             val newCartProduct = cartProduct.copy(count = cartProduct.count + count)
@@ -58,5 +62,5 @@ class FakeCartRepository(
         cartProducts.value = emptyList()
     }
 
-    private fun productBy(id: Long): Product = Product(id, "url", "오둥 $id", 1000)
+    private fun productBy(id: Long): Product? = products.find { it.id == id }
 }

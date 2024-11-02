@@ -62,7 +62,7 @@ internal fun CartProductItem(
                 onCartProductRemove(cartProduct.product.id)
             }) {
                 Icon(
-                    imageVector = Icons.Default.Clear, contentDescription = "장바구니에서 제거"
+                    imageVector = Icons.Default.Clear, contentDescription = "상품 제거"
                 )
             }
         }
@@ -84,7 +84,7 @@ internal fun CartProductItem(
                     modifier = Modifier.padding(end = 10.dp),
                     text = stringResource(
                         id = R.string.price_format,
-                        cartProduct.product.price
+                        cartProduct.totalPrice
                     ),
                     style = MaterialTheme.typography.titleLarge,
                 )

@@ -8,6 +8,9 @@ import nextstep.shoppingcart.domain.repository.ProductRepository
 class FakeProductRepository(
     private val products: List<Product> = emptyList()
 ) : ProductRepository {
+
+    constructor(vararg products: Product) : this(products.toList())
+
     override fun products(): Flow<List<Product>> = flow {
         emit(products)
     }
