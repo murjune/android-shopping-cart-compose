@@ -11,6 +11,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import androidx.navigation.toRoute
 import kotlinx.serialization.Serializable
+import nextstep.shoppingcart.domain.repository.CartRepository
 import nextstep.shoppingcart.domain.repository.ProductRepository
 
 fun NavController.navigateToProductDetail(
@@ -48,13 +49,17 @@ fun NavGraphBuilder.productGraph(
                     )
                 )
             }
+            val cartRepository = CartRepository.get()
+            val onCartAdd = remember(product) {
+                {
+                    product?.let { cartRepository.addProduct(it.id, count = 1) }
+                    navigateToCart()
+                }
+            }
             ProductDetailScreen(
                 product = product,
                 onBack = onBack,
-                onCartAdd = {
-                    /* TODO 장바구니 레포지토리에 담기 */
-                    navigateToCart()
-                }
+                onCartAdd = onCartAdd
             )
         }
     }

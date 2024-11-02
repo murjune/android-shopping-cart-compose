@@ -10,7 +10,7 @@ interface ProductRepository {
     fun productBy(id: Long): Product?
 
     companion object {
-        var instance: ProductRepository? = null
+        private var instance: ProductRepository? = null
 
         fun get(): ProductRepository {
             return instance ?: DefaultProductRepository().also {
