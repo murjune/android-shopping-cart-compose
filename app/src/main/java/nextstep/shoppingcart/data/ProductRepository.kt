@@ -1,11 +1,11 @@
 package nextstep.shoppingcart.data
 
 import androidx.annotation.VisibleForTesting
-import nextstep.shoppingcart.product.model.Product
+import kotlinx.coroutines.flow.Flow
 import nextstep.shoppingcart.data.model.Product
 
 interface ProductRepository {
-    fun products(): List<Product>
+    fun products(): Flow<List<Product>>
     fun productBy(id: Long): Product?
 
     companion object {

@@ -3,6 +3,7 @@ package nextstep.shoppingcart.product
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavOptions
@@ -11,7 +12,6 @@ import androidx.navigation.navigation
 import androidx.navigation.toRoute
 import kotlinx.serialization.Serializable
 import nextstep.shoppingcart.data.ProductRepository
-import nextstep.shoppingcart.product.model.Product
 
 fun NavController.navigateToProductDetail(
     productId: Long,
@@ -31,7 +31,8 @@ fun NavGraphBuilder.productGraph(
     ) {
         composable<ProductRoute.Home> {
             val productRepository = ProductRepository.get()
-            val products: List<Product> by remember { mutableStateOf(productRepository.products()) }
+            val products by productRepository.products()
+                .collectAsStateWithLifecycle(initialValue = emptyList())
             ProductScreen(
                 products = products,
                 onCartClick = navigateToCart,
