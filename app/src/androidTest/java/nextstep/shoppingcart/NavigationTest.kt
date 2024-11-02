@@ -10,11 +10,10 @@ import androidx.navigation.compose.ComposeNavigator
 import androidx.navigation.testing.TestNavHostController
 import androidx.navigation.toRoute
 import nextstep.shoppingcart.cart.CartScreen
-import nextstep.shoppingcart.data.DefaultProductRepository
 import nextstep.shoppingcart.data.FakeProductRepository
-import nextstep.shoppingcart.data.ProductRepository
+import nextstep.shoppingcart.domain.repository.ProductRepository
 import nextstep.shoppingcart.product.ProductRoute
-import nextstep.shoppingcart.data.model.Product
+import nextstep.shoppingcart.domain.model.Product
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test

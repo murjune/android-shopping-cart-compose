@@ -1,8 +1,9 @@
-package nextstep.shoppingcart.data
+package nextstep.shoppingcart.domain.repository
 
 import androidx.annotation.VisibleForTesting
 import kotlinx.coroutines.flow.Flow
-import nextstep.shoppingcart.data.model.Product
+import nextstep.shoppingcart.data.DefaultProductRepository
+import nextstep.shoppingcart.domain.model.Product
 
 interface ProductRepository {
     fun products(): Flow<List<Product>>

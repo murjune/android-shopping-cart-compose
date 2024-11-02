@@ -38,7 +38,7 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import nextstep.shoppingcart.R
-import nextstep.shoppingcart.data.model.Product
+import nextstep.shoppingcart.domain.model.Product
 import nextstep.shoppingcart.product.preview.ProductPreviewParameterProvider
 import nextstep.shoppingcart.ui.theme.ShoppingCartTheme
 

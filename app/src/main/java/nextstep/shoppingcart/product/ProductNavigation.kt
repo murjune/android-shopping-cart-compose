@@ -11,7 +11,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import androidx.navigation.toRoute
 import kotlinx.serialization.Serializable
-import nextstep.shoppingcart.data.ProductRepository
+import nextstep.shoppingcart.domain.repository.ProductRepository
 
 fun NavController.navigateToProductDetail(
     productId: Long,

@@ -2,7 +2,8 @@ package nextstep.shoppingcart.data
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import nextstep.shoppingcart.data.model.Product
+import nextstep.shoppingcart.domain.model.Product
+import nextstep.shoppingcart.domain.repository.ProductRepository
 
 class FakeProductRepository(
     private val products: List<Product> = emptyList()
